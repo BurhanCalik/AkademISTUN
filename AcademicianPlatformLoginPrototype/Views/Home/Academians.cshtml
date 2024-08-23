@@ -1,0 +1,82 @@
+﻿@model AcademicianWithDepartment
+
+@{
+    ViewData["Title"] = "View";
+    var AcademianDepartmentValue = Model.Department; 
+    if (Model.Department == "Sağlık Meslek")
+    {
+        AcademianDepartmentValue = "Sağlık Meslek Yüksekokulu";
+    }
+    if (Model.Department == "Yabancı Diller")
+    {
+        AcademianDepartmentValue = "Yabancı Diller Yüksekokulu";
+    }
+}
+
+<style>
+    #UserPhoto {
+        
+        height: 200px;
+        
+        display: inline !important;
+        margin: 0 auto;
+        border-radius: 120px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    #isUsersNull
+    {
+        font-size:2rem;
+
+    }
+
+</style>
+<h1 class="display-4 text-center custom-heading">@AcademianDepartmentValue Akademisyenleri </h1>
+
+        <hr />
+        <div class="card-container">
+            <div class="row">
+                @foreach (var user in Model.Users)
+                {
+                    <div class="col-md-3 my-2">
+                        <div class="card">
+                            <img src="@user.ProfilePhotoPath" class="img-fluid display-inline my-2" id="UserPhoto" style="width: 200px;">
+                            <h5 class="text-center">@user.Title @user.FirstName @user.LastName</h5>
+                            <h6 class="text-center">@user.Department</h6>
+                            <a asp-action="AcademicianDetails" asp-route-id="@user.Id" class="btn btn-details btn-sm">Detayları Görüntüle</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        @if(Model.Users.Count == 0)
+        {
+    <p class="text-center  " id="isUsersNull">Sistemde henüz herhangi bir "@AcademianDepartmentValue" akademisyeni kayıtlı değil</p>
+        }
+
+
+@*@model List<ApplicationUser>
+
+<h1>Kullanıcılar</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Kullanıcı Adı</th>
+            <th>Email</th>
+            <th>Departman</th>
+            <!-- Diğer kullanıcı özelliklerini buraya ekleyebilirsiniz -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@user.Department</td>
+                <!-- Diğer kullanıcı özelliklerini buraya ekleyebilirsiniz -->
+            </tr>
+        }
+    </tbody>
+</table>
+*@

@@ -1,0 +1,1611 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.profilePic {
+    width: 75%;
+    height: auto;
+    border-radius: 120px;
+    display: inline;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.brand-img {
+    width: 50%;
+    height: auto;
+}
+
+/*//profiles css codes start*/
+
+#hesapAyarlari-title {
+    color: #8b1a1a;
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+
+/* Profilinizi düzenleyin yazýsýný kaldýrdým*/
+/*#profiliniziDuzenleyin-title {
+    color: #000;
+    font-size: 15px;
+    font-style: revert;
+}*/
+
+/* Örnek 2: Form içi etiketler */
+.form-floating label {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Örnek 3: Form giriþ kutularý */
+.form-control {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+/* Örnek 4: Kaydet düðmesi */
+.btn-primary {
+    background-color: #191970;
+    color: white;
+    border: 1px solid #191970;
+    outline: none;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Örnek 5: Hata mesajlarý */
+.text-danger {
+    color: #FF0000;
+}
+
+
+
+
+#profile-title {
+    color: #A82F3A;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+}
+
+#manageEmail-title {
+    color: #A82F3A;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+}
+
+#setPassword-title {
+    color: #A82F3A;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    font-size: 30px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+}
+
+#registeredLogins-title {
+    color: #A82F3A;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    font-size: 30px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+}
+
+#twoFactor-title {
+    color: #A82F3A;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    font-size: 30px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+}
+
+
+
+
+.form-floating input.form-control {
+    border-radius: 10px;
+}
+
+
+.form-floating {
+    margin-top: 10px;
+}
+
+
+
+
+/* Sidebar start */
+
+
+.nav-pills {
+    background-color: #fff;
+    width: 800px;
+}
+    /* Dikdörtgenlerin yüksekliðini artýrma */
+    .nav-pills .nav-link {
+        padding: 15px 50px;
+        text-align: left;
+        display: block;
+    }
+
+    /* Menü seçeneklerinin alt baþlýklarý (yazý) */
+
+
+    /* Menü seçeneklerinin normal durum rengi */
+    .nav-pills .nav-item .nav-link {
+        background-color: transparent;
+        color: #4f4f4f;
+        transition: background-color 0.3s, color 0.3s;
+        font-size: larger;
+        font-weight: 600;
+        padding: 15px 20px;
+        width: 290px;
+    }
+        .nav-pills .nav-item .nav-link i {
+            margin-right: 10px;
+            
+        }
+.nav-link:hover {
+    /* Hover durumunda görüntülemek istediðiniz stil ayarlarýný burada tanýmlayýn. Örneðin: */
+    background-color: #ccc;
+    color: #000;
+}
+
+
+
+        /* Menü seçeneklerinin týklanmýþ durum rengi */
+        .nav-pills .nav-item .nav-link.active {
+            background-color: transparent;
+            color: black;
+        }
+
+        /* iletiþim bilgilerini güncelle yazýsýndaki güncelle için */
+        .guncelle {
+            margin-left:60px;
+        }
+
+
+        .nav-pills .nav-item .nav-link:hover {
+            background-color: rgba(200, 200, 200, 0.5);
+            color: black;
+            width: 290px;
+        }
+        /* Seçilen menü seçeneðinin sol baþýný siyaha boyama */
+        .nav-pills .nav-item .nav-link.active {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+            .nav-pills .nav-item .nav-link.active::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 9px;
+                height: 100%;
+                background-color: #1c1c1c;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }
+
+
+/* e-mail ayarlarýndaki buton*/
+#email-verification {
+    color: #363636;
+    border: none;
+    font-size: 14px;
+    padding-top: 10px;
+    font-style: italic;
+}
+
+.text-info {
+    color: #000;
+    border: none;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.hover-gray:hover {
+    background-color: #708090;
+    border-color: #708090;
+}
+/* Sidebar end */
+
+
+
+/*//profiles css codes end*/
+
+#card-text {
+    width: 600px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#admin-about-me-text {
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#card {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+    #card::before,
+    #card::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        border-radius: 15px;
+        transition: all 0.5s;
+        opacity: 0;
+        z-index: 100;
+    }
+
+    #card:hover::before,
+    #card:hover::after {
+        opacity: 1;
+        filter: none;
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #000;
+    }
+
+    #card .content {
+        filter: none;
+        opacity: 1;
+    }
+
+#details {
+    transform: translate(-50%, -195%);
+    position: absolute;
+    left: 50%;
+    bottom: 48px;
+    opacity: 0;
+    transition: 0.3s ease-out;
+    border: 0px solid;
+    outline: 2px solid;
+    color: black;
+    outline-color: black;
+    outline-offset: 0px;
+    text-shadow: none;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 2.5rem;
+    max-width: 160px;
+    width: 100%;
+    letter-spacing: 0.3rem;
+    font-weight: 600;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    transition: all 550ms cubic-bezier( .36,.63,.5,.73 );
+}
+
+#card:hover #details {
+    opacity: 1;
+    filter: none;
+    z-index: 10000;
+    pointer-events: auto;
+}
+#details:hover {
+    border: 2px solid var(--accent);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    color: var(--accent);
+}
+
+
+@media screen and (min-width: 769px) {
+    #card:hover::before,
+    #card:hover::after {
+        opacity: 1;
+        
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    #card:hover::before,
+    #card:hover::after {
+        opacity: 0;
+        display: none;
+       
+    }
+
+    #card:hover #details {
+        display: none;
+        
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    #card {
+        
+        width: 100% !important;
+        height: 280px !important;
+
+    }
+
+    #cardTitle {
+        font-size: 24px !important;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+
+    #card-text {
+        
+        font-size: 14px; 
+    }
+    .profilePic {
+        width: 60px !important;
+        height: auto;
+    }
+
+    #department {
+        
+        font-size: 14px !important;
+    }
+
+    #Date {
+        font-size: 9px !important;
+        margin-right: 20px;
+        
+    }
+
+    .indexNames {
+        
+        font-size: 18px !important;
+       
+    }
+    #mobileDetails{
+        
+    }
+    
+}
+@media (min-width: 769px){
+    #mobileDetails{
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #card .card-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+}
+
+#department {
+    margin-bottom: 5px;
+    transform: scale(0.1);
+}
+
+#cardTitle {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.indexNames {
+    font-size: 21px;
+}
+
+#titleP {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.page-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+}
+
+
+#container {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: revert;
+    margin-bottom: revert;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+#container:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.custom-button {
+    margin-top: 10px;
+    background-color: #A82F3A;
+    border-radius: 10px;
+    color: white;
+}
+
+.form-group {
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+    margin: 0 auto;
+    color: #1e3799;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.new {
+    font-size: 35px;
+    text-align: center;
+    margin: 10px;
+    color: #a82f3a;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.custom-button:hover {
+    background-color: darkred;
+}
+
+
+
+.icon-advanced {
+    background: url('/icons/x-solid.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    display: inline-block;
+    margin-top: 10px;
+    width: 15px;
+    height: 20px;
+}
+
+#cardd {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+    #cardd:hover {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+
+
+.fonts {
+    color: #85150d;
+    font-size: 20px;
+}
+
+.buttonnn {
+    color: black;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 40px;
+    max-width: 160px;
+    width: 100%;
+    letter-spacing: 0.3rem;
+    font-weight: 600;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    transition: all 1s ease-in;
+}
+
+    .buttonnn:hover {
+        color: #3d6df2;
+    }
+
+    .buttonnn svg {
+        height: 40px;
+        left: 0;
+        top: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .buttonnn rect {
+        fill: none;
+        stroke: #000000;
+        stroke-width: 2;
+        stroke-dasharray: 450, 0;
+        transition: all 0.5s linear;
+    }
+
+    .buttonnn:hover rect {
+        stroke-width: 5;
+        stroke-dasharray: 20, 300;
+        stroke-dashoffset: 48;
+        stroke: #3d6df2;
+        transition: all 2s cubic-bezier(0.22, 1, 0.25, 1);
+    }
+
+
+
+@media (max-width: 768px) {
+    .btn-outline-danger {
+        color: #a82f3a !important;
+        background-color: white !important;
+    }
+
+    .btn-outline-danger:hover {
+        color: white !important;
+        background-color: #a82f3a !important;
+    }
+
+}
+.btn-outline-danger {
+    color: #a82f3a !important;
+    background-color: white !important;
+}
+
+    .btn-outline-danger:hover {
+        color: white !important;
+        background-color: #a82f3a !important;
+    }
+
+.scroll-top-button {
+    position: fixed;
+    right: 20px;
+    bottom: 36px;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border: 0;
+    border-radius: 50%;
+    background: #85150d;
+    color: #f9f9f9;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 999999;
+}
+
+    .scroll-top-button.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    @media (max-width: 768px){
+        #scroll-top-button{
+            display: none;
+        }
+    }
+.btn-duyuruSil {
+    border-radius: 7px;
+    width: 80px;
+    font-weight: 500;
+}
+
+.btn-duyuruDuzen {
+    font-weight: 500;
+    border-radius: 7px;
+}
+
+#annHeader {
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
+    height: 40px;
+    background-color: #A82F3A !important;
+    color: #A82F3A !important;
+}
+
+#annHeaderContent{
+    color: white !important;
+    font-size: 15px !important;
+}
+
+.faculty-label {
+    color: #191970;
+    display: block;
+}
+
+.date-label {
+    color: #191970;
+    display: block;
+}
+
+.announcementTitle {
+    font-size: 30px;
+    color: #000;
+}
+
+
+.duyuru-duzenle {
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.title-text {
+    color: #1c0f45;
+    font-size: 25px;
+}
+
+.custom-title {
+    font-weight: bold;
+    color: #000;
+}
+
+.custom-faculty {
+    font-weight: bold;
+    color: #000;
+
+}
+
+.custom-content {
+    font-weight: bold;
+    color: #000;
+}
+
+.announcement-list {
+    list-style: none;
+    padding: 0;
+}
+
+.announcement-item {
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.08);
+}
+
+    .announcement-item p {
+        width: auto; /* Geniþliði otomatik olarak ayarla */
+        display: inline; /* Satýr içi görünüm */
+    }
+
+/* Baþlýk, Ýçerik, Fakülte, Tarih ve Butonlar */
+.announcementTitle,
+.AnnouncementContent,
+.faculty-label,
+.date-label,
+.btn-duyuruSil,
+.edit-btn {
+    margin: 5px 0;
+}
+.text-dark {
+    color: #000;
+    font-size: 19px;
+    font-weight: bold;
+}
+p.duyuru-bulunmuyor {
+    color: #000;
+    font-size: 19px;
+    
+}
+.email-gonder {
+    font-size: 35px;
+    text-align: center;
+    margin: 10px;
+    color: #a82f3a;
+
+}
+.btn-mailGonder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+
+}
+.button-mailGonder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.gonderen-eposta {
+    font-size: 18px;
+    color: #191970;
+}
+
+.gonderen-epostasi {
+    
+    color: #000;
+    font-size: 17px;
+}
+.alici-eposta {
+    font-size: 18px;
+    color: #191970;
+}
+
+.alici-epostasi {
+   
+    color: #000;
+    font-size: 17px;
+}
+.mail-baslik {
+    font-size: 16px;
+}
+.email-container {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: revert;
+    margin-bottom: revert;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+    .email-container:hover {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+
+
+.label-titles{
+    margin:3px;
+}
+.btn-yeniDuyuruOlustur {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    font-weight:500;
+    margin-top:0px;
+}
+
+.profile-photo {
+    max-width: 150px;
+    border: 3px solid #A82F3A;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    background-color: #fff;
+    position: relative;
+    margin: 0 auto;
+}
+
+
+/* Kullanýcý bilgileri kartý */
+.card-academician {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.name {
+    color: #A82F3A;
+}
+
+/* Duyuru Kartlarý */
+.custom-announcement-card {
+    border: 2px solid #A82F3A;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+    .custom-announcement-card .card-header {
+        background-color: #A82F3A;
+        color: #fff;
+    }
+
+    .custom-announcement-card .card-title {
+        font-size: 1.25rem;
+        color: #E33025;
+    }
+
+    .custom-announcement-card .card-body {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .custom-announcement-card .btn {
+        background-color: #1e3799;
+        border-color: #1e3799;
+        color: #fff;
+    }
+
+    .custom-announcement-card .card-footer.text-end {
+        background-color: #f8f9fa;
+        text-align: right;
+    }
+
+    .custom-announcement-card .font-italic.text-muted {
+        font-style: italic;
+        color: #6c757d;
+    }
+
+
+/* Kullanýcý Adý */
+.card-title {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+
+.custom-title {
+    font-size: 24px;
+    color: #A82F3A;
+    font-weight: bold;
+}
+
+
+.custom-department {
+    font-size: 18px;
+    color: #666;
+}
+
+
+/* Card içerisindeki metin stil */
+.card-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+    .card-text strong {
+        font-weight: bold;
+    }
+
+
+    .card-text a {
+        color: #1e3799;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+
+        .card-text a:hover {
+            text-decoration: underline;
+        }
+
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.shake {
+    animation: shake 2s ease-in-out infinite;
+}
+
+
+
+
+/* Sayfayý yatayda ve dikeyde ortalama */
+.page-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 65vh;
+}
+
+/* Ýçeriði içeren alan */
+#container {
+    width: 80%;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+#mailSender {
+    filter: none;
+    border: none;
+    background-color: white;
+}
+
+
+
+header {
+    background-color: #A82F3A;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+}
+
+
+.nav-item {
+    margin: 0 10px; 
+   
+}
+       
+
+
+.navbar {
+    display: flex;
+    justify-content: center;
+}
+
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    width: 200px; 
+   
+}
+
+.nav-item.custom-item {
+    position: relative;
+    
+}
+
+
+.navbar-nav li {
+    margin: 5px;
+    padding: 5px;
+   
+}
+
+    .navbar-nav li a {
+        text-decoration: none;
+        color: white;
+        
+    }
+
+.custom-item {
+    color: #333;
+    background-color: #A82F3A;
+    border-radius: 10px;
+}
+
+    .custom-item:hover {
+        background-color: darkred;
+        color: black;
+        border-radius: 10px;
+    }
+
+
+
+.sub-menu-1 {
+    display: none;
+}
+
+.nav-item.custom-item:hover .sub-menu-1 {
+    display: block;
+}
+
+
+
+.sub-menu-1 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #A82F3A;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 10px;
+    margin-left: -15px;
+    font-size: 15px;
+}
+
+    .sub-menu-1 ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .sub-menu-1 li {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+
+        .sub-menu-1 li:hover {
+            background-color: darkred;
+            border-radius: 10px;
+        }
+
+
+.nav-link.navbar-text {
+    color: #A82F3A;
+}
+
+.nav-link.d-inline {
+    color: #A82F3A;
+}
+
+.sub-menu-2 {
+    display: none;
+}
+
+.hover-me:hover .sub-menu-2 {
+    position: absolute;
+    display: block;
+    margin-top: -40px;
+    margin-left: 140px;
+    background-color: #A82F3A;
+    border-radius: 10px;
+}
+
+.sub-menu-1 .hover-me:hover .sub-menu-2 {
+    display: block;
+}
+
+.sub-menu-3 {
+    display: none;
+}
+
+.hover-me:hover .sub-menu-3 {
+    position: absolute;
+    display: block;
+    margin-top: -50px;
+    margin-left: 140px;
+    background-color: #A82F3A;
+    border-radius: 10px;
+    width: 210px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.sub-menu-1 .hover-me:hover .sub-menu-3 {
+    display: block;
+}
+
+
+
+.fa-caret-right {
+    font-size: 14px;
+    color: #fff;
+    position: relative;
+    top: -6px;
+    float: right;
+}
+
+.text-animation {
+    animation: bounce 3s;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        color: #E33025;
+    }
+
+    100% {
+        color: #A82F3A;
+    }
+}
+
+.animate {
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#animatedText {
+    color: #A82F3A;
+}
+
+.custom-heading {
+    color: #A82F3A;
+}
+
+.btn-details {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #A82F3A;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-details:hover {
+        background-color: darkred;
+    }
+
+
+.sub-menu-4 {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #A82F3A;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 5px;
+    margin-left: -15px;
+    font-size: 10px;
+    z-index: 1; 
+}
+
+
+.nav-link:hover .sub-menu-4 {
+    display: block;
+}
+
+.sub-menu-4 ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sub-menu-4 li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+li a i {
+    margin-right: 8px; 
+}
+
+
+.custom-item a i {
+    margin-right: 9px; 
+}
+
+.sub-menu-4 li:hover {
+    background-color: darkred;
+    border-radius: 10px;
+}
+
+
+.followers-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.follower-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.profilePicture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-right: 15px; 
+}
+
+
+    .user-name a {
+        text-decoration: none;
+        color: #A82F3A;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 5px; 
+    }
+
+.user-department {
+    color: #666;
+    margin-right: 15px; 
+}
+
+.user-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.buton {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.buton-primary {
+    background-color: #fff;
+    color: #A82F3A;
+    border: 1px solid #000000;
+}
+
+.buton-success {
+    background-color: #fff;
+    color: #A82F3A;
+    border: 1px solid #000000;
+}
+
+.commentContsd {
+    
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.custom-list-item {
+    list-style: none; /* Baþýndaki noktayý kaldýrýr */
+}
+
+.comment-text {
+    word-wrap: break-word; /* Uzun kelimeleri kýrmak için */
+    overflow-wrap: break-word; /* Uzun kelimeleri kýrmak için (Modern tarayýcýlarda kullanýlýyor) */
+}
+
+
+
+/* bu kýsým çok deneysel , þimdiden kusura bakmayýn (esforper) */
+/* bu kýsým Indexdeki dropdown menü ile ilgili*/
+.dropdown-es {
+   float:right;
+   text-align:center;
+    overflow: hidden;
+}
+
+    .dropdown-es .dropbtn-es {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: black;
+        padding: 14px 16px;
+        background-color: inherit;
+        font: inherit;
+        margin: 0;
+    }
+
+
+.dropdown-content-es {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    width: 30%;
+    /* height: 500px; Kaldýr bu satýrý */
+    max-height:300px;
+    left: 43%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 9999;
+    
+}
+
+
+    .dropdown-content-es .header {
+        background: red;
+        padding: 16px;
+        color: white;
+    }
+
+.dropdown-es:hover .dropdown-content-es {
+    display: block;
+}
+
+/* Create three equal columns that floats next to each other */
+.column-es {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    background-color: #ccc;
+    height: 100%;
+}
+    .column-es .notifi-div {
+        padding: 10px;
+        display: block;
+    }
+    .column-es a {
+        float: none;
+        color: black;
+        text-decoration: none;
+        text-align: left;
+    }
+    .column-es a:hover
+    {
+        color:#535353;
+    }
+
+
+    .column-es .notifi-div:hover {
+        background-color: #ddd;
+    }
+
+
+/* Clear floats after the columns */
+.row-es:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column-es {
+        width: 100%;
+        height: auto;
+    }
+}
+/* ----- */
+
+/* Log-In Start */
+#video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#video-background {
+    object-fit: cover;
+    filter: brightness(0.3); 
+    object-fit: cover;
+    width: 100%;
+}
+
+#content-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.form-container {
+    width: 100%;
+    max-width: 400px; 
+    padding: 20px;
+}
+#akademistunLogin {
+    color: #f8f8ff;
+    font-size: 40px;
+    text-align: center;
+    position: absolute; 
+    top: 130px; 
+    left: 0;
+    right: 0; 
+}
+
+
+#forgot-password {
+    color: #f8f8ff;
+    font-size: 16px;
+}
+.checkbox-login {
+    color: #f8f8ff; 
+    margin-top: 10px; 
+}
+#login-submit {
+    background-color: #A82F3A;
+    color: #FFFFFF;
+    border: none;
+}
+.first-line {
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+}
+
+.second-line {
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+}
+.login-button {
+    position: absolute;
+    top: 37%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #A82F3A;
+    border: none;
+    font-size: 18px;
+    width: 200px;
+}
+.kayitol-Title {
+    font-size: 35px;
+    color: #A82F3A;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 0; /* Alt boþluðu kaldýrýr */
+}
+.kayitol-text {
+    color: #1e3799;
+    font-size: 18px;
+    margin-top: -30px;
+}
+.hesab-kayit-text {
+    font-size: 18px;
+    color: #000;
+    margin-top: -30px;
+}
+.bold-text-giris {
+    display: inline;
+}
+.bottom-text {
+    font-weight: bold;
+    color: #dcdcdc;
+}
+
+.navbar-brand a {
+    color: #A82F3A;
+    text-decoration: none;
+}
+
+#container {
+    background-color: white;
+}
+
+.form-group {
+    margin-bottom: -7px; 
+}
+
+.button-mailGonder {
+    margin-top: 3px; 
+}
+
+.footer {
+    background-color: #A82F3A;
+    padding: 10px 0;
+    color: #A82F3A;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+}
+
+    .footer p {
+        margin: 0 0 10px;
+    }
+
+    .footer a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+    .footer i {
+        margin-right: 5px;
+    }
+
+    .footer ul {
+        padding: 0;
+        list-style: none;
+    }
+
+        .footer ul li {
+            margin-bottom: 5px;
+        }
+
+    .footer h5 {
+        color: #fff;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+.about-text p {
+    margin: 0 0 10px;
+    line-height: 1.5;
+}
+
+.fab.fa-facebook {
+    color: #1877F2;
+}
+
+.fab.fa-instagram {
+    color: #E4405F;
+}
+
+li.ozel-li {
+    line-height: 1; 
+}
+.ozel-li {
+    margin-left: 19px;
+}

@@ -1,0 +1,138 @@
+﻿@using AcademicianPlatform.Areas.Identity.Data;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AcademicianPlatform</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AcademicianPlatform.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <script src="~/js/tinymce/tinymce.min.js" asp-append-version="true"></script>
+</head>
+<body>
+    <header>
+        <partial name="_LoginPartialNav" />
+        <nav style="z-index: 1000000;" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <div class="navbar-brand" id="">
+                    <a asp-area="" asp-controller="Home" asp-action="Index">AkademİSTÜN</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>İletişim Bilgileri</h5>
+                    <ul class="list-unstyled">
+                        <li class="ozel-li">
+                            <br><br><i class="fas fa-map-marker-alt"></i> Adres: Sütlüce Kampüsü
+                             <br>Sütlüce Mah. İmrahor Cad. No: 82
+                            <br> Beyoğlu – İstanbul
+                            <br><br><i class="fas fa-phone"></i> Telefon: 444 3 788
+                            <br><br><i class="far fa-envelope"></i> E-posta: info@istun.edu.tr
+                        </li>
+
+
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Hakkımızda</h5>
+                    <div class="col-md-4">
+                        <ul class="list-unstyled">
+                            <li class="ozel-li">
+                                <br> <br>Akademik içeriklerin ve duyuruların paylaşıldığı <br>resmi bir platformdur.
+                                <br> <br>Bu platform üzerinden iletişim kurabilir ve güncel<br> bilgilere kolayca ulaşabilirsiniz.
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <h5>Sosyal Medya</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="https://www.facebook.com/istunedu" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/istunedu/" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        &copy; 2023 AkademISTUN - Tüm hakları saklıdır.
+            </div>
+    </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        var animatedText = document.getElementById('animatedText');
+
+        // Her 1 saniyede bir "animate" sınıfını ekleyip kaldırarak animasyon oluştur
+        setInterval(function () {
+            animatedText.classList.toggle('animate');
+        }, 1000);
+
+    </script>
+
+</body>
+</html>
+

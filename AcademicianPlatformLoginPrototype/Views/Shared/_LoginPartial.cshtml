@@ -1,0 +1,126 @@
+﻿@using AcademicianPlatform.Areas.Identity.Data;
+@using Microsoft.AspNetCore.Identity
+@using Newtonsoft.Json
+@using System.IO
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject IWebHostEnvironment _environment
+
+<ul class="navbar-nav">
+    @if (User.Identity?.Name != null)
+    {
+        var currentUser = await UserManager.FindByNameAsync(User.Identity.Name);
+        @if (SignInManager.IsSignedIn(User) && currentUser != null)
+        {
+            <li class="nav-item custom-item">
+                <a asp-area="" asp-controller="Home" asp-action="Index">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-bullhorn"></i> DUYURULAR</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li class="nav-item custom-item text-center"><a asp-area="" asp-controller="Home" asp-action="News"><i class="fa-solid fa-users"></i>TAKİP EDİLENLERİN DUYURULARI</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item custom-item">
+                <a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-user-graduate"></i> AKADEMİSYENLER</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li class="nav-item custom-item"><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Tıp"><i class="fa-solid fa-user-doctor"></i> TIP FAKÜLTESİ</a></li>
+                        <li class="nav-item custom-item"><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Diş Hekimliği"><i class="fa-solid fa-tooth"></i> DİŞ HEKİMLİĞİ FAKÜLTESİ</a></li>
+                        <li class="nav-item custom-item"><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Eczacılık"><i class="fa-solid fa-capsules"></i> ECZACILIK FAKÜLTESİ</a></li>
+                        <li class="hover-me">
+                            <a href="#"><i class="fa-solid fa-gear"></i>MÜHENDİSLİK VE DOĞA BİLİMLERİ FAKÜLTESİ</a>
+                            <div class="sub-menu-3">
+                                <ul>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Bilgisayar Mühendisliği"><i class="fa-solid fa-computer"></i>Bilgisayar mühendisliği</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Endüstri Mühendisliği"><i class="fa-solid fa-industry"></i> Endüstri mühendisliği</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Kimya mühendisliği"><i class="fa-solid fa-flask-vial"></i> Kimya mühendisliği</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Makine Mühendisliği"><i class="fa-solid fa-screwdriver-wrench"></i> Makine mühendisliği</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Mekatronik Mühendisliği"><i class="fa-solid fa-toolbox"></i> Mekatronik mühendisliği</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Mimarlık"><i class="fa-solid fa-compass-drafting"></i> Mimarlık</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Moleküler Biyoloji ve Genetika"><i class="fa-solid fa-dna"></i> Moleküler Biyoloji ve Genetik</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Yazılım Mühendisliği"><i class="fa-solid fa-code"></i> Yazılım mühendisliği</a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hover-me">
+                            <a href="#"><i class="fa-solid fa-user-nurse"></i> SAĞLIK BİLİMLERİ FAKÜLTESİ</a><i class="fa-solid fa-caret-right"></i>
+                            <div class="sub-menu-2">
+                                <ul>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Beslenme ve Diyetetik"><i class="fa-solid fa-utensils"></i> Beslenme ve Diyetetik</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Ergoterapi"><i class="fa-solid fa-puzzle-piece"></i> Ergoterapi</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Fizyoterapi ve Rehabilitasyon"><i class="fa-solid fa-bed"></i> Fizyoterapi ve Rehabilitasyon</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Hemşirelik"><i class="fa-solid fa-user-nurse"></i> Hemşirelik</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Odyoloji"><i class="fa-solid fa-ear-listen"></i> Odyoloji</a></li>
+
+                                </ul>
+
+
+                            </div>
+
+
+                        </li>
+                        <li class=" hover-me">
+                            <a href="#"><i class="fa-solid fa-book-open"></i>İKTİSADİ,İDARİ VE SOSYAL BİLİMLER FAKÜLTESİ</a> <i class="fa-solid fa-caret-right"></i>
+                            <div class="sub-menu-2">
+                                <ul>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="İngiliz Dili ve Edebiyatı"><i class="fa-solid fa-book"></i> İngiliz Dili ve Edebiyatı</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="İşletme"><i class="fa-solid fa-briefcase"></i> İşletme</a></li>
+                                    <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Psikoloji"><i class="fa-solid fa-brain"></i> Psikoloji</a></li>
+
+                                </ul>
+
+
+                            </div>
+
+                        </li>
+
+                    </ul>
+                </div>
+
+            </li>
+            <li class="nav-item custom-item">
+                <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-graduation-cap"></i> YÜKSEKOKULLAR</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Yabancı Diller"><i class="fa-solid fa-graduation-cap"></i>Yabancı Diller Yüksekokulu</a></li>
+                        <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Sağlık Meslek"><i class="fa-solid fa-graduation-cap"></i>Sağlık Meslek Yüksekokulu</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item custom-item">
+                <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-user-graduate"></i> ENSTİTÜLER</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Academians" asp-route-academianDepartment="Tıp"><i class="fa-solid fa-user-graduate"></i>Lisansüstü Eğitim Enstitüsü</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item custom-item">
+                <a href="/Home/NewAnnouncement">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fa-solid fa-bullhorn"></i> YENİ DUYURU
+                </a>
+            </li>
+
+
+            <li class="nav-item p-0 m-0 justify-content-center p-0 m-0">
+                <div class="nav-link text-dark nav-text text-decoration-none p-0 m-2" style="width:50px; position: relative;" asp-area="Identity" asp-page="/Account/Manage/Index" >
+                    <img src="@currentUser.ProfilePhotoPath" class="p-0 m-0" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+
+                    <div class="sub-menu-4">
+                        <ul>
+                            <li><a asp-area="Identity" asp-page="/Account/Manage/Index">Hesap Ayarları</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Manage/MyAnnouncements">Duyurularım</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+
+            
+
+        }
+    }
+</ul>
+

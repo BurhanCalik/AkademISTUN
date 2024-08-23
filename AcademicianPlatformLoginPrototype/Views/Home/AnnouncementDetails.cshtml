@@ -1,0 +1,135 @@
+@using AcademicianPlatform.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@model AcademicianPlatform.Models.AnnouncementViewModel
+@inject UserManager<ApplicationUser> UserManager
+@inject IUserStore<ApplicationUser> UserStore
+@inject SignInManager<ApplicationUser> SignInManager
+
+@* bunlardan hangisi gerekli emin değilim o nedenle hepsini aldım *@
+
+
+
+@{
+	ViewBag.Title = "Mail Gönder";
+}
+
+@{
+	var senderID = Model.Announcement.AnnouncementSenderID;
+	Console.WriteLine("AAAAAAAAAAsenderID: " + senderID);
+	@*var user = await UserStore.FindByIdAsync(senderID, CancellationToken.None);*@
+	var user = await UserManager.FindByIdAsync(Model.Announcement.AnnouncementSenderID);
+
+	//var AnnouncomentSenderID = Model.AnnouncementSenderID;
+	var currentUser = await UserManager.GetUserAsync(User);
+	var isCurrentUserAnnouncementCreator = currentUser.Id == senderID;
+}
+
+<div class="container mt-2">
+	<div class="row d-flex justify-content-center">
+		<div class="col-md-12">
+			<div class="card p-3 py-4 border" id="cardd">
+				<div class="text-center">
+					<img src="@user.ProfilePhotoPath" style="width: 150px; height: 150px; object-fit: cover; border: 3px solid #A82F3A; border-radius: 50%;" class="rounded-circle">
+					
+				</div>
+				<div class="text-center mt-3">
+					<h5 class="mt-0 mb-2">@user.Title @user.FirstName @user.LastName</h5>
+					<h6 class="mb-2"> @user.Department</h6>
+				</div>
+				<div class="px-4 mt-1">
+					<div class="d-flex justify-content-between align-items-center">
+						<span class="fonts mb-4">@Model.Announcement.AnnouncementTitle</span>
+						<span class="mb-4" style="color: #666666; font-size: 14px;">
+							@Model.Announcement.AnnouncementSentDate.ToString("dd/MM/yyyy HH:mm")
+						</span>
+					</div>
+					<p>
+						@Html.Raw(@Model.Announcement.AnnouncementContent)
+					</p>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a class="buttonnn mt-4" asp-controller="Home" asp-action="EmailSender" asp-route-id="@Model.Announcement.ID">
+						<svg>
+							<rect x="0" y="0" fill="none" width="100%" height="100%" />
+						</svg>
+						Mail Gönder
+					</a>
+				</div>
+				<div class="card-footer mt-4">
+					<div class="d-flex justify-content-between align-items-center">
+						<span>
+							Telefon Numarası: @user.PhoneNumber
+						</span>
+						<a asp-action="AcademicianDetails" asp-route-id="@user.Id" class="btn btn-outline-danger">@user.FirstName @user.LastName Profili</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<br />
+
+<form asp-controller="Home" asp-action="AddComment" method="post">
+	<input type="hidden" name="announcementID" value="@Model.Announcement.ID" />
+	<div class="form-group">
+		<label for="commentContent">Yorumunuzu Girin:</label>
+		<textarea class="form-control" id="commentContent" name="commentContent" rows="2"></textarea>
+	<br />
+	<button type="submit" class="btn btn-success">Yorum Ekle</button>
+	</div>
+</form>
+
+@if (Model.Announcement.Comments != null && Model.Announcement.Comments.Count > 0)
+{
+	<h2 class="text-center" style="color: #A82F3A;">Yorumlar</h2>
+	<br />
+	<ul>
+		@foreach (var comment in Model.Announcement.Comments.OrderByDescending(c => c.DatePosted))
+		{
+			var commentedUser = await UserManager.FindByIdAsync(comment.UserId);
+			@if (commentedUser != null)
+			{
+				<li class="custom-list-item">
+					<div class="container commentCont">
+						<div class="row">
+					<div class="col-lg-1 col-1 col-md-1 col-sm-1">
+						<i class="fa-regular fa-comment fa-lg" style="margin-left: 50%; margin-top: 50%; color: #A82F3A;"></i>
+					</div>
+							<div class= "col-lg-1 col-md-2 col-sm-2 col-2">
+								<img src="@commentedUser.ProfilePhotoPath" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+							 </div>
+							 <div class="col-lg-9 col-8 col-md-8 col-sm-8">
+								<span><strong>@commentedUser.Title @commentedUser.FirstName @commentedUser.LastName</strong></span>
+								<span class="comment-date" style="color: #666666;">@comment.DatePosted.ToString("dd/MM/yyyy HH:mm")</span>
+								<div class="comment-text">@comment.Text</div>
+							</div>
+							<div class="col-lg-1 col-1 col-md-1 col-sm-1">
+								@if (User.Identity.Name == commentedUser.UserName)
+								{
+									<form asp-controller="Home" asp-action="DeleteComment" method="post" onsubmit="return confirm('Silmek istediğinize emin misiniz?');">
+										<input type="hidden" name="commentID" value="@comment.Id" />
+										<button type="submit" class="btn btn-sm ">
+											 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg d-inline" viewBox="0 0 16 16">
+												<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+											</svg>
+										</button>
+									</form>
+								}
+
+							</div>
+						</div>
+					</div>
+			
+					<hr>
+					
+				</li>
+			}
+			else
+			{
+				<span>Yorum Görüntülenemiyor</span>
+			}
+		}
+	</ul>
+	
+}

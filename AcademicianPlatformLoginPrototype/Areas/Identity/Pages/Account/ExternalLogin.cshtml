@@ -1,0 +1,114 @@
+﻿@page
+@model ExternalLoginModel
+@{
+    ViewData["Title"] = "KAYIT Ol";
+}
+
+<h1 class="kayitol-Title">@ViewData["Title"]</h1>
+<br />
+<h4 id="external-login-title">
+    <span class="kayitol-text">İstanbul Sağlık ve Teknoloji Üniversitesi @Model.ProviderDisplayName</span>
+    <span class="hesab-kayit-text">Hesabınız ile Kayıt Olun</span>
+</h4>
+<hr />
+
+<p id="external-login-description" class="text-info">
+    <strong>@Model.ProviderDisplayName</strong> hesabınız başarıyla doğrulanmıştır.
+    Lütfen bilgilerinizi doğru bir şekilde girerek Kayıt Ol butonuna tıklayınız.
+</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="POST" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Input.Email" class="form-control" autocomplete="email" disabled/>
+                <input asp-for="Input.Email" type="hidden" />
+                <label asp-for="Input.Email" class="form-label"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="phonenumber" />
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" />
+                <label asp-for="Input.FirstName" class="form-label"></label>
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.LastName" class="form-control" autocomplete="lastname" />
+                <label asp-for="Input.LastName" class="form-label"></label>
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <textarea asp-for="Input.AboutMeText" class="form-control" autocomplete="aboutmetext" rows="4"/></textarea>
+                <label asp-for="Input.AboutMeText" class="form-label"></label>
+                <span asp-validation-for="Input.AboutMeText" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Input.Department" class="form-label"></label>
+                <select asp-for="Input.Department" class="form-select">
+                    <option value=""></option>
+                    <option value="1">Tıp</option>
+                    <option value="2">Diş Hekimliği</option>
+                    <option value="3">Eczacılık</option>
+                    <option value="4">Bilgisayar Mühendisliği</option>
+                    <option value="5">Endüstri Mühendisliği</option>
+                    <option value="6">Endüstriyel Tasarım Mühendisliği</option>
+                    <option value="7">Kimya Mühendisliği</option>
+                    <option value="8">Makine Mühendisliği</option>
+                    <option value="9">Mekatronik Mühendisliği</option>
+                    <option value="10">Mimarlık</option>
+                    <option value="11">Moleküler Biyoloji ve Genetik</option>
+                    <option value="12">Yazılım Mühendisliği</option>
+                    <option value="13">Beslenme ve Diyetetik</option>
+                    <option value="14">Ergoterapi</option>
+                    <option value="15">Fizyoterapi ve Rehabilitasyon</option>
+                    <option value="16">Hemşirelik</option>
+                    <option value="17">Odyoloji</option>
+                    <option value="18">İngiliz Dili ve Edebiyatı</option>
+                    <option value="19">İşletme</option>
+                    <option value="20">Psikoloji</option>
+                    <option value="21">İngilizce Mütercim-Tercümanlık</option>
+                    <option value="22">İngilizce Hazırlık Birimi</option>
+                    <option value="23">Ortak Yabancı Dil Dersleri Birimi</option>
+                    <option value="24">Anestezi</option>
+                    <option value="25">Ağız ve Diş Sağlığı</option>
+                    <option value="26">İlk ve Acil Yardım</option>
+                    <option value="27">Tıbbi Görüntüleme Teknikleri</option>
+                </select>
+                <span asp-validation-for="Input.Department" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Input.Title" class="form-label"></label>
+                <select asp-for="Input.Title" class="form-select">
+                    <option value=""></option>
+                    <option value="1">Prof. Dr.</option>
+                    <option value="2">Doç. Dr.</option>
+                    <option value="3">Yrd. Doç. Dr.</option>
+                    <option value="4">Dr. Öğr. Üyesi</option>
+                    <option value="5">Öğr. Üyesi</option>
+                    <option value="6">Arş. Gör.</option>
+                </select>
+                <span asp-validation-for="Input.Title" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.CV" class="form-control" autocomplete="cv" />
+                <label asp-for="Input.CV" class="form-label"></label>
+                <span asp-validation-for="Input.CV" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.ProfilePhoto" class="form-control" autocomplete="profilephoto" />
+                <label asp-for="Input.ProfilePhoto" class="form-label"></label>
+                <span asp-validation-for="Input.ProfilePhoto" class="text-danger"></span>
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Kayıt Ol</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

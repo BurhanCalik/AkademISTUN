@@ -1,0 +1,30 @@
+﻿@model NewAnnouncementsViewModel
+
+@{
+    ViewData["Title"] = "News";
+}
+
+
+<h3 class="display-4 text-center" style="color: #a82f3a">Takip Edilenlerin Duyuruları</h3>
+
+<hr />
+@if (Model.FollowerAnnouncements.Any())
+{
+    <ul>
+        @foreach (var announcement in Model.FollowerAnnouncements)
+        {
+            <li>
+                <a asp-controller="Home" asp-action="AnnouncementDetails" asp-route-id="@announcement.ID"><strong>@announcement.AnnouncementTitle</strong></a>
+                <a asp-controller="Home" asp-action="AcademicianDetails" asp-route-id="@announcement.AnnouncementSenderID"></a>
+                <p>@announcement.AnnouncementContent</p>
+                <p>Posted on: @announcement.AnnouncementSentDate.ToString("yyyy-MM-dd HH:mm:ss")</p>
+
+            </li>
+        }
+    </ul>
+
+}
+else
+{
+    <p class="text-center" style="font-size:2rem;">Şuanda takip ettiğiniz kişilerden yeni bir duyuru yok.</p>
+}

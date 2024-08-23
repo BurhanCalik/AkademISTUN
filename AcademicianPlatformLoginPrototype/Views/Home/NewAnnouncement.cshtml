@@ -1,0 +1,44 @@
+<div class="page-center">
+    <div class="container" id="container">
+        <div class="centered-text">
+            <h2 class="new">Yeni Duyuru Oluştur</h2>
+        </div>
+        <form method="post" action="/Home/PostNewAnnouncement">
+            <div class="form-group">
+                <label for="AnnouncementTitle">Başlık</label>
+                <input type="text" class="form-control" id="AnnouncementTitle" name="announcementTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="AnnouncementFaculty">İlgili Fakülte</label>
+                <select class="form-control" id="AnnouncementFaculty" name="announcementFaculty" required>
+                    <option value="Tüm Fakülteler">Tüm Fakülteler</option>
+                    <option value="Tıp">Tıp Fakültesi</option>
+                    <option value="Diş Hekimliği">Diş Hekimliği Fakültesi</option>
+                    <option value="Eczacılık">Eczacılık Fakültesi</option>
+                    <option value="Mühendislik ve Doğa Bilimleri">Mühendislik ve Doğa Bilimleri Fakültesi</option>
+                    <option value="Sağlık Bilimleri">Sağlık Bilimleri Fakültesi</option>
+                    <option value="İktisadi, İdari ve Sosyal Bilimler">İktisadi, İdari ve Sosyal Bilimler Fakültesi</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="AnnouncementContent">Duyuru İçeriği</label>
+                <textarea class="form-control" id="AnnouncementContent" name="announcementContent" rows="10" cols="18"></textarea>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="isSpeacialAnnouncement" value="true"> Acil duyuru olarak işaretle
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="sendToAll" value="true"> Mailleri Herkese Gönder
+                </label>
+            </div>
+            <input type="hidden" name="senderName" id="senderName" value="@User.Identity.Name" />
+
+            <div class="button-mailGonder">
+                <button type="submit" class="btn btn-primary btn-yeniDuyuruOlustur">Oluştur</button>
+            </div>
+        </form>
+    </div>
+</div>

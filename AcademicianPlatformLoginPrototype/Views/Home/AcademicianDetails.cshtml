@@ -1,0 +1,85 @@
+﻿@model AcademicianDetailsViewModel
+
+@{
+    ViewData["Title"] = $"{Model.FullName}'s Akademisyen Detayları";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            
+            <div class="card card-academician">
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                       
+                        <img src="@Model.Academian.ProfilePhotoPath" alt="Profil Resmi" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                        <h2 class="card-title custom-title">@Model.Academian.Title @Model.FullName</h2>
+                        <h5 class="card-text custom-department">@Model.Academian.Department</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text"><strong>Email: </strong>@Model.Academian.Email</p>
+                            <p class="card-text"><b>Telefon Numarası: </b>@Model.Academian.PhoneNumber</p>
+                            <p class="card-text"><strong>Hakkında: </strong>@Model.Academian.AboutMeText</p>
+                            <p class="card-text">
+                                <a href="@Model.Academian.CVPath" class="text-decoration-none">Buraya</a> tıklayarak CV dosyasına ulaşabilirsiniz.
+                            </p>
+                            <p><strong>Son Giriş Tarihi:</strong> @Model.Academian.LastLogin</p>
+                            
+                             <a class="btn btn-success mb-2" asp-controller="Home" asp-action="FollowerFollowing" asp-route-id="@Model.Academian.Id">Takipçi - Takip Listesi</a>
+                             
+               
+                            
+                            @if (Model.IsCurrentUser == false)
+                            {
+                                @if (Model.IsFollowing == true)
+                                {
+                                    <form asp-controller="Home" asp-action="UnfollowUser" method="post">
+                                        <input type="hidden" name="userIdToUnfollow" value="@Model.Academian.Id" />
+                                        <button type="submit" class="btn btn-danger">Takibi Bırak</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-controller="Home" asp-action="FollowUser" method="post">
+                                        <input type="hidden" name="userIdToFollow" value="@Model.Academian.Id" />
+                                        <button type="submit" class="btn btn-primary">Takip Et</button>
+                                    </form>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="mt-4 custom-announcement-section">
+    
+    <h2 class="name">@Model.FullName Duyuruları</h2>
+    <hr />
+
+    @foreach (var announcement in Model.AcademianAnnouncements)
+    {
+        <div class="card custom-announcement-card  mb-3" style="max-width: 100%;">
+            <div class="card-header">Duyuru (@announcement.AnnouncementFaculty)</div>
+            <div class="card-body text-dark">
+                <h5 class="card-title">@announcement.AnnouncementTitle</h5>
+                <span class="card-text">@Html.Raw(@announcement.AnnouncementContent)</span>
+                <a class="btn btn-outline-danger m-0" asp-controller="Home" asp-action="AnnouncementDetails" asp-route-id="@announcement.ID">Detaylar</a>
+                
+            </div>
+            <div class="card-footer text-end custom-announcement-footer"><strong>@announcement.AnnouncementSentDate</strong></div>
+        </div>
+
+    }
+    @if (!Model.AcademianAnnouncements.Any())
+    {
+        <p class="font-italic text-muted mt-3 custom-announcement-no-content">Henüz duyuru yok.</p>
+    }
+</div>
+
+

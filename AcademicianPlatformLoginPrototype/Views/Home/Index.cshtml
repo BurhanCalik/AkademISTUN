@@ -1,0 +1,284 @@
+﻿@using AcademicianPlatform.Areas.Identity.Data;
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@inject IUserStore<ApplicationUser> UserStore
+@inject SignInManager<ApplicationUser> SignInManager
+@model AcademicianPlatform.Models.IndexModel
+
+@{
+	ViewData["Title"] = "Home Page";
+	var newscount = Model.NotificationList.Count;
+}
+
+<style>
+	.faculty-btn {
+		margin: 0 0.3%; /* Adjust the margin value as needed */
+	}
+</style>
+<div class="container mb-3 mt-1">
+	<div class="row">
+		<div class="col-4">
+			<select class="form-select" id="facultySelect">
+				<option value="">Duyuruları Filtrele...</option>
+				<option value="Index">Filtrele: Tüm Fakülteler</option>
+				<option value="IndexFaculty" data-faculty="Tıp">Filtrele: Tıp Fakültesi</option>
+				<option value="IndexFaculty" data-faculty="Diş Hekimliği">Filtrele: Diş Hekimliği Fakültesi</option>
+				<option value="IndexFaculty" data-faculty="Eczacılık">Filtrele: Eczacılık Fakültesi</option>
+				<option value="IndexFaculty" data-faculty="Mühendislik ve Doğa Bilimleri">Filtrele: Mühendislik ve Doğa Bilimleri Fakültesi</option>
+				<option value="IndexFaculty" data-faculty="Sağlık Bilimleri">Filtrele: Sağlık Bilimleri Fakültesi</option>
+				<option value="IndexFaculty" data-faculty="İktisadi, İdari ve Sosyal Bilimler">Filtrele: İktisadi, İdari ve Sosyal Bilimler Fakültesi</option>
+			</select>
+		</div>
+		
+		<div class="col-4 text-end">	<!--Notification System-->
+			<div class="dropdown-es">
+				<button class="dropbtn-es">
+					<i class="fa-solid fa-bell" style="color: #85150d;"></i> Bildirimler(@newscount)
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content-es">
+					<div class="row-es">
+						<div class="column-es" style="background-color: #ffffff;">
+
+							@if(Model.NotificationList.Count!=0)
+							{
+								@foreach (var item in Model.NotificationList)
+								{
+									if (item is Comment comment)
+									{
+										<div class="notifi-div">
+											<a asp-controller="Home" asp-action="AnnouncementDetails" asp-route-id="@comment.AnnouncementId">
+												<p>
+													<a asp-controller="Home" asp-action="AcademicianDetails"
+													asp-route-id="@comment.UserId">
+														@{
+															var user = await UserManager.FindByIdAsync(comment.UserId);
+															var FullName = user.FirstName + " " + user.LastName;
+															
+														}
+													   
+														<strong style="color: #85150d; font-size: 17px;">@FullName</strong>
+													</a>,
+													<span style="color: black; font-size: 17px; font-weight: bold;">
+														"@comment.AnnouncementTitle"
+													</span>
+													<span style="font-size: 17px; font-weight: 500;">duyuruna şu yorumu yazdı: </span>
+													<span style="font-size: 15px;">@comment.Text</span>
+												</p>
+											</a>
+										</div>
+										<hr />
+									}
+									else if (item is FollowModelForIndexModel follow)
+									{
+										<div class="notifi-div">
+											@{
+												var followUser = await UserManager.FindByIdAsync(follow.followerid);
+												var followFullName = followUser.FirstName + " " + followUser.LastName;
+											}
+											<a asp-controller="Home" asp-action="AcademicianDetails" asp-route-id="@follow.followerid">
+												<p><strong>@followFullName</strong>, seni ediyor.</p>
+											</a>
+											<!-- Burada bir takipçi görüntüleme kodu -->
+										</div>
+									}
+								}
+								
+							}
+							else
+							{
+								<p>Şuanda herhangi bir bildiriniz bulunmamaktadır.</p>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-4 text-end">
+			<a asp-controller="Home" asp-action="NewAnnouncement" class="btn btn-outline-danger faculty-btn">Yeni Duyuru</a>
+		</div>
+	</div>
+</div>
+@*
+@if(Model.IndexNews > 0)
+{
+ <h3 class="text-center" style="background-color:red;color:white;padding:5px;">@Model.IndexNews tane okunmamış yeni duyuru ve yorumunuz var</h3>
+}
+*@
+@if (Model.SpecialAnnouncement.Count > 0)
+{
+	<hr />
+	@foreach (var item in Model.SpecialAnnouncement)
+	{
+		@if (item != null)
+		{
+
+			var senderID = item.AnnouncementSenderID;
+			var user = await UserStore.FindByIdAsync(senderID, CancellationToken.None);
+			if (user != null)
+			{
+				bool isNew = item.AnnouncementSentDate > user.LastLogin;
+
+				<div class="container" style=" height:50%">
+					<div class="card border mb-3 shadow" id="card" style="border-radius: 15px;">
+
+						<div id="annHeader" class="card-header d-inline align-content-end card-header-with-shadow ann-header" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+							<h5 id="annHeaderContent">
+								Acil Duyuru (@item.AnnouncementFaculty)@if (isNew == true)
+								{
+									<span>Yeni Duyuru </span>
+								}<span id="Date" style="float: right; font-size: 12px; margin-top: 6px;">Gönderim tarihi: @item.AnnouncementSentDate.ToString("dd/MM/yyyy HH:mm")</span>
+							</h5>
+						</div>
+						<div class="card-body" style="height: 175px;">
+
+							<div>
+								<h5 class="card-title m-0 p-0">
+									<div class="container">
+										<div class="row">
+											<div class="col-lg-1 col-md-2 col-2 m-0 p-2 pt-0">
+												<img src="@user.ProfilePhotoPath" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+											</div>
+											<div class="col-lg-10 col-md-10 col-10">
+												<div class="row ml-0 col-10">
+													<div class="col-lg-10 col-md-10 col-10 m-0 p-0">
+														<span class="indexNames">@user.Title @user.FirstName @user.LastName</span>
+
+													</div>
+													<div class="col-lg-3 col-md-10 col-sm-10 m-0 p-0">
+														<span id="department" style="font-size: 13px;"> @user.Department</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</h5>
+							</div>
+							<span id="cardTitle" style="font-size: 24px; color: #85150d;"><p class="m-0 p-0" id="titleP">@item.AnnouncementTitle</p></span>
+
+							<p class="card-text" id="card-text">
+								@Html.Raw(@item.AnnouncementContent)
+							</p>
+
+							<div>
+								<a class="btn btn-outline-danger m-0" id="mobileDetails" asp-controller="Home" asp-action="AnnouncementDetails" asp-route-id="@item.ID">Detaylar</a>
+							</div>
+
+							<a id="details" asp-controller="Home" asp-action="AnnouncementDetails" asp-route-id="@item.ID">Detaylar</a>
+
+							<button onclick="scrollToTop()"
+									id="scroll-top-button"
+									class="scroll-top-button"
+									type="button">
+								<span class="material-symbols-outlined"> arrow_upward </span>
+							</button>
+						</div>
+					</div>
+
+					<br />
+
+				</div>
+
+			}
+		}
+	}
+	<hr />
+}
+<!-- Normal Announcements -->
+@if (Model.AllAnnouncement != null)
+{
+	@foreach (var item in Model.AllAnnouncement)
+	{
+		@if (item != null)
+		{
+
+			var senderID = item.AnnouncementSenderID;
+			var user = await UserStore.FindByIdAsync(senderID, CancellationToken.None);
+			if (user != null)
+			{
+
+				<div class="container" style=" height:50%">
+					<div class="card border mb-3 shadow" id="card" style="border-radius: 15px;">
+
+						<div id="annHeader" class="card-header d-inline align-content-end card-header-with-shadow" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+
+							<h5 id="annHeaderContent">
+								Duyuru (@item.AnnouncementFaculty)<span id="Date" style="float: right; font-size: 12px; margin-top: 6px;">Gönderim tarihi: @item.AnnouncementSentDate</span>
+							</h5>
+						</div>
+
+						<div class="card-body" style="height: 175px;">
+
+							<div>
+								<h5 class="card-title m-0 p-0">
+									<div class="container">
+										<div class="row">
+											<div class="col-lg-1 col-md-2 col-2 m-0 p-2 pt-0">
+												<img src="@user.ProfilePhotoPath" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+											</div>
+											<div class="col-lg-10 col-md-10 col-10">
+												<div class="row ml-0 col-10">
+													<div class="col-lg-10 col-md-10 col-10 m-0 p-0">
+														<span class="indexNames">@user.Title @user.FirstName @user.LastName </span>
+
+													</div>
+													<div class="col-lg-3 col-md-10 col-sm-10 m-0 p-0">
+														<span id="department" style="font-size: 13px;"> @user.Department</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</h5>
+							</div>
+							<span id="cardTitle" style="font-size: 24px; color: #85150d;"><p class="m-0 p-0" id="titleP">@item.AnnouncementTitle</p></span>
+
+							<p class="card-text" id="card-text">
+								@Html.Raw(@item.AnnouncementContent)
+							</p>
+
+							<div>
+								<a class="btn btn-outline-danger m-0" id="mobileDetails" asp-controller="Home" asp-action="AnnouncementDetails" asp-route-id="@item.ID">Detaylar</a>
+							</div>
+
+							<a id="details" asp-controller="Home" asp-action="AnnouncementDetails" asp-route-id="@item.ID">Detaylar</a>
+
+							<button onclick="scrollToTop()"
+									id="scroll-top-button"
+									class="scroll-top-button"
+									type="button">
+								<span class="material-symbols-outlined"> arrow_upward </span>
+							</button>
+						</div>
+					</div>
+
+					<br />
+
+				</div>
+			}
+		}
+	}
+
+}
+else
+{
+	<p class="text-center m-3" style="font-size:2rem;">Şuanda görüntülenecek herhangi bir duyuru bulunmamaktadır.</p>
+}
+
+<script>
+	const scrollTopButton = document.querySelector("#scroll-top-button");
+	const nav = document.querySelector("#nav");
+
+	const onScroll = (event) => {
+		const scrollPosition = event.target.scrollingElement.scrollTop;
+
+		scrollTopButton.classList.toggle("visible", scrollPosition > 0);
+		nav.classList.toggle("scrolled", scrollPosition > 0);
+	};
+
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	};
+
+	document.addEventListener("scroll", onScroll);
+</script>
